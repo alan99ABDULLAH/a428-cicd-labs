@@ -18,12 +18,12 @@ pipeline {
         }
         stage('Deploy') { 
             steps {
-                sh './jenkins/scripts/deliver.sh' 
-                timeout(time: 1, unit: 'MINUTES') {
-                    input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)'
-                }
-                sh './jenkins/scripts/kill.sh' 
+                sh './jenkins/scripts/deliver.sh'
+                sleep 60  // Menjeda selama 1 menit
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
 }
+
+
